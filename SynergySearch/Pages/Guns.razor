@@ -1,0 +1,54 @@
+﻿@page "/guns"
+@inject HttpClient Http
+
+@using System.Net
+
+<PageTitle>Gungeon Guns</PageTitle>
+
+<h1>Guns from Enter the Gungeon</h1>
+
+<p>Displays all gun stats from Enter the Gungeon</p>
+
+@if (_guns == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Icon</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var gun in _guns)
+            {
+                <tr>
+                    <td>@gun.Name</td>
+                    <td><img src="@gun.Link" /></td>
+                    <td>@gun.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Gun[]? _guns;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _guns = await Http.GetFromJsonAsync<Gun[]>("sample-data/guns_labelled.json");
+    }
+
+    public class Gun
+    {
+        public string Name { get; set; }
+        public string Link { get; set; }
+        public string Description { get; set; }
+    }
+}
+
