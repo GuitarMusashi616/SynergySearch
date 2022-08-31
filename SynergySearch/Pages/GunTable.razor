@@ -1,0 +1,24 @@
+﻿<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Icon</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var gun in Guns)
+		{
+			<tr>
+				<td>@gun.Name</td>
+				<td><img src="@gun.Link" /></td>
+				<td>@gun.Description</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+@code {
+	[Parameter, EditorRequired]
+	public Gun[] Guns { get; set; } = default!;
+}

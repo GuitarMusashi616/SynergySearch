@@ -15,25 +15,7 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Icon</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var gun in _guns)
-            {
-                <tr>
-                    <td>@gun.Name</td>
-                    <td><img src="@gun.Link" /></td>
-                    <td>@gun.Description</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <GunTable Guns="_guns"></GunTable>
 }
 
 @code {
@@ -42,13 +24,6 @@ else
     protected override async Task OnInitializedAsync()
     {
         _guns = await Http.GetFromJsonAsync<Gun[]>("sample-data/guns_labelled.json");
-    }
-
-    public class Gun
-    {
-        public string Name { get; set; }
-        public string Link { get; set; }
-        public string Description { get; set; }
     }
 }
 
