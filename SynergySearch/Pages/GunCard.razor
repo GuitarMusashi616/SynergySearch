@@ -1,0 +1,14 @@
+﻿<div class="card border-primary bg-opacity-25 bg-dark border-4 text-center p-3 m-1 d-inline-block" style="width: 18rem; image-rendering: pixelated">
+	<img src="@Gun.Link" class="card-img border-2 p-3 bg-black" />
+    <div class="card-body">
+        <h8 class="card-title h4">@Gun.Name</h8>
+        <h9 class="text-muted card-subtitle mb-2 d-grid">Subtitle</h9>
+        <p class="card-text h6">@Gun.Description</p>
+        <a class="card-link" href="#">Link</a><a class="card-link" href="#">Link</a>
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public Gun Gun { get; set; } = default!;
+}

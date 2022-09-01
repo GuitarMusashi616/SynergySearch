@@ -15,7 +15,9 @@
 }
 else
 {
-    <GunTable Guns="_guns"></GunTable>
+    @foreach (var gun in _guns) {
+        <GunCard Gun="gun"></GunCard>
+    }
 }
 
 @code {
