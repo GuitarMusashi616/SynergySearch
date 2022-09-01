@@ -1,8 +1,9 @@
-﻿<div class="card border-primary bg-opacity-25 bg-dark border-4 text-center p-3 m-1 d-inline-block" style="width: 18rem; image-rendering: pixelated">
+﻿<div class="card bg-opacity-25 bg-dark border-4 text-center p-3 m-1 d-inline-block" style="width: 18rem; border-color: @Gun.BorderColor; image-rendering: pixelated">
 	<img src="@Gun.Link" class="card-img border-2 p-3 bg-black" />
+	<img class="card-img w-auto h-auto mt-2" src=@Gun.RatingLink>
     <div class="card-body">
         <h8 class="card-title h4">@Gun.Name</h8>
-        <h9 class="text-muted card-subtitle mb-2 d-grid">Subtitle</h9>
+        <h9 class="text-muted card-subtitle d-block mb-2">@Gun.Quote</h9>
         <p class="card-text h6">@Gun.Description</p>
         <a class="card-link" href="#">Link</a><a class="card-link" href="#">Link</a>
     </div>
