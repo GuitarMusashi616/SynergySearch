@@ -1,4 +1,5 @@
 ﻿@page "/guns"
+@page "/guns/{SearchQuery}"
 @inject HttpClient Http
 
 @using System.Net
@@ -24,11 +25,17 @@ else
 }
 
 @code {
-    private Gun[]? _guns;
-    
+    private IEnumerable<Gun>? _guns;
+    [Parameter]
+    public string? SearchQuery { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
-        _guns = await Http.GetFromJsonAsync<Gun[]>("sample-data/guns_labelled5.json");
+        var AllGuns = await Http.GetFromJsonAsync<Gun[]>("sample-data/guns_labelled5.json");
+        if (SearchQuery == "" || SearchQuery == null) {
+            _guns = AllGuns.AsEnumerable();
+            return;
+        }
+        _guns = AllGuns!.Where(x => x.Name.Contains(SearchQuery, StringComparison.CurrentCultureIgnoreCase));
     }
 }
-
