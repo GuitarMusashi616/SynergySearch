@@ -8,6 +8,7 @@
 <h1>Guns from Enter the Gungeon</h1>
 
 <p>Displays all gun stats from Enter the Gungeon</p>
+<Search />
 
 @if (_guns == null)
 {
@@ -15,9 +16,11 @@
 }
 else
 {
-    @foreach (var gun in _guns) {
-        <GunCard Gun="gun"></GunCard>
-    }
+    <div class="grid">
+		@foreach (var gun in _guns) {
+			<GunCard Gun="gun"></GunCard>
+		}
+    </div>
 }
 
 @code {

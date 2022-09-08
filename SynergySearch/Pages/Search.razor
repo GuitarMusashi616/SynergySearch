@@ -1,0 +1,28 @@
+﻿@inject NavigationManager NavManager;
+
+<PageTitle>Search</PageTitle>
+
+<div class="form-floating mb-5">
+	<input type="search" 
+		   class="form-control form-control-lg" 
+		   id="searchBar" 
+		   placeholder="Example Query" 
+		   @onkeydown="ExecuteSearch" 
+		   @bind=_searchQuery
+		   @bind:event="oninput"/>
+
+
+	<label for="searchBar">Search</label>
+</div>
+
+@code {
+	private string _searchQuery = "";
+	// make search bar navigate to searchGun.razor
+	public void ExecuteSearch(KeyboardEventArgs args) {
+		if (args.Key != "Enter") {
+			return;
+		}
+		NavManager.NavigateTo(_searchQuery);
+	}
+
+}
