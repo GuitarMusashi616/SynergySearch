@@ -19,9 +19,9 @@
 	private string _searchQuery = "";
 	// make search bar navigate to searchGun.razor
 	public void ExecuteSearch(KeyboardEventArgs args) {
-		if (args.Key != "Enter") {
-			return;
-		}
+		//if (args.Key != "Enter") {
+		// 	return;
+		//}
 		NavManager.NavigateTo($"guns/{_searchQuery}");
 	}
 
