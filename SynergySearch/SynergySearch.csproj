@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\gun-icons\" />
+    <Folder Include="wwwroot\item-icons\" />
   </ItemGroup>
 
 </Project>
