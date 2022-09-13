@@ -11,9 +11,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.8" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\gun-icons\" />
-    <Folder Include="wwwroot\item-icons\" />
-  </ItemGroup>
-
 </Project>
