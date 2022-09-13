@@ -1,15 +1,15 @@
-﻿@page "/guns/"
-@page "/guns/{SearchQuery}"
+﻿@page "/synergies/"
+@page "/synergies/{SearchQuery}"
 @inject HttpClient Http
 
 @using System.Net
 
-<PageTitle>Gungeon Guns</PageTitle>
+<PageTitle>Gungeon Synergies</PageTitle>
 
-<h1>Guns from Enter the Gungeon</h1>
+<h1>Synergies from Enter the Gungeon</h1>
 
-<p>Displays all gun stats from Enter the Gungeon</p>
-<Search Route="guns"/>
+<p>Displays all gun synergies from Enter the Gungeon</p>
+<Search Route="synergies"/>
 
 @if (_guns == null)
 {
@@ -57,3 +57,4 @@ else
         _guns = _all_guns.Where(x => x.Name!.Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase));
     }
 }
+

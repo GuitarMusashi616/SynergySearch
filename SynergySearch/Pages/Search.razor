@@ -11,18 +11,19 @@
 		   @bind=_searchQuery
 		   @bind:event="oninput"/>
 
-
 	<label for="searchBar">Search</label>
 </div>
 
 @code {
 	private string _searchQuery = "";
+	[Parameter, EditorRequired]
+	public string Route { get; set; } = default!;
 	// make search bar navigate to searchGun.razor
 	public void ExecuteSearch(KeyboardEventArgs args) {
 		//if (args.Key != "Enter") {
 		// 	return;
 		//}
-		NavManager.NavigateTo($"guns/{_searchQuery}");
+		NavManager.NavigateTo($"{Route}/{_searchQuery}");
 	}
 
 }
