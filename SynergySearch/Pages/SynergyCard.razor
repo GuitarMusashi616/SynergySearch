@@ -1,0 +1,16 @@
+﻿<div class="card shadow bg-opacity-25 bg-dark border-4 text-center p-3 m-1 d-inline-block" style="width: 18rem; image-rendering: pixelated">
+	@*<img src="@Synergy.Link" class="card-img border-2 p-3 bg-black" />*@
+	@*<img class="card-img w-auto h-auto mt-2" src=@Synergy.RatingLink>*@
+    <div class="card-body">
+        <h8 class="card-title h4">@Synergy.Name</h8>
+        @*<h9 class="text-muted card-subtitle d-block mb-2">@Synergy.Quote</h9>*@
+        <p class="card-text h6">@Synergy.Description</p>
+        <a class="card-link" href="#">Link</a><a class="card-link" href="#">Link</a>
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public Synergy Synergy { get; set; } = default!;
+}
+

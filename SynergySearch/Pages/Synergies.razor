@@ -11,29 +11,29 @@
 <p>Displays all gun synergies from Enter the Gungeon</p>
 <Search Route="synergies"/>
 
-@if (_guns == null)
+@if (_synergies == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
     <div class="grid">
-		@foreach (var gun in _guns) {
-			<GunCard Gun="gun"></GunCard>
+		@foreach (var synergy in _synergies) {
+			<SynergyCard Synergy="synergy"></SynergyCard>
 		}
     </div>
 }
 
 @code {
-    private IEnumerable<Gun>? _all_guns;
-    private IEnumerable<Gun>? _guns;
+    private IEnumerable<Synergy>? _all_synergies;
+    private IEnumerable<Synergy>? _synergies;
     [Parameter]
     public string? SearchQuery { get; set; }
     private string? _cachedSearchQuery;
 
     protected override async Task OnInitializedAsync()
     {
-        _all_guns = await Http.GetFromJsonAsync<Gun[]>("sample-data/stuff_labelled.json");
+        _all_synergies = await Http.GetFromJsonAsync<Synergy[]>("sample-data/stuff_labelled.json");
         updateResults("");
     }
 
@@ -51,10 +51,10 @@ else
     {
         if (searchQuery == "" || searchQuery == null) 
         {
-            _guns = _all_guns;
+            _synergies = _all_synergies;
             return;
         }
-        _guns = _all_guns.Where(x => x.Name!.Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase));
+        _synergies = _all_synergies.Where(x => x.Name!.Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase));
     }
 }
 
