@@ -14,7 +14,23 @@ public class ItemGroup
 {
     public string[]? _items;
     public (string, string)[]? _pairs;
-    public string? Type { get; set; }
+    public string? _type;
+    public string? Type
+    {
+        get
+        {
+            return _type;
+        }
+        set
+        {
+            if (value!.StartsWith("All"))
+            {
+                _type = "";
+                return;
+            } 
+            _type = value;
+        }
+    }
     public string[] Items
     {
         get
