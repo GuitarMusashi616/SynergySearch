@@ -1,0 +1,14 @@
+﻿<div>
+	<h6 class="mb-0 mt-3">@ItemGroup.Type</h6>
+	<div class="container d-flex justify-content-center align-items-center">
+		@foreach (var (name, link) in ItemGroup.Pairs) {
+			<MiniItemCard Name="@name" Link="@link" />
+		}
+	</div>
+</div>
+
+
+@code {
+	[Parameter, EditorRequired]
+	public ItemGroup ItemGroup { get; set; } = default!;
+}

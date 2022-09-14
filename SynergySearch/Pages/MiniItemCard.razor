@@ -1,0 +1,17 @@
+﻿<div class="card shadow bg-dark bg-opacity-25 m-1">
+    <div class="bg-black m-2 p-2">
+		<img src="@Link" class="card-img" style="min-block-size: 8rem"/>
+    </div>
+    <div>
+		<h6 class="card-title">@Name</h6>
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public string Name { get; set; } = default!;
+
+    [Parameter, EditorRequired]
+    public string Link { get; set; } = default!;
+}
+

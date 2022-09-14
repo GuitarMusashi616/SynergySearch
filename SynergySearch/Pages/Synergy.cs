@@ -9,6 +9,7 @@ public class Synergy
 
 }
 
+
 public class ItemGroup
 {
     public string[]? _items;
