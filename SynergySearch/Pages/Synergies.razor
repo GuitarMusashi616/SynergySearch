@@ -8,7 +8,7 @@
 
 <h1>Synergies from Enter the Gungeon</h1>
 
-<p>Displays all gun synergies from Enter the Gungeon</p>
+<p>Displays all Gungeon synergies, use searchbar to filter by gun or item</p>
 <Search Route="synergies"/>
 
 @if (_synergies == null)
@@ -34,7 +34,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         _all_synergies = await Http.GetFromJsonAsync<IEnumerable<Synergy>>("sample-data/synergies.json");
-        updateResults("");
+        await updateResults("");
     }
 
     protected override async Task OnParametersSetAsync()
@@ -43,18 +43,30 @@ else
         {
             // parameter changed 
             _cachedSearchQuery = SearchQuery;
-            updateResults(_cachedSearchQuery);
+            await updateResults(_cachedSearchQuery!);
         }
     }
 
-    private void updateResults(string searchQuery)
+    private async Task updateResults(string searchQuery)
     {
         if (searchQuery == "" || searchQuery == null) 
         {
             _synergies = _all_synergies;
             return;
         }
-        _synergies = _all_synergies.Where(x => x.Name!.Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase));
+
+        _synergies = _all_synergies!.Where(
+            x => {
+                foreach (var itemGroup in x.ItemGroups!) { 
+                    foreach (string item in itemGroup.Items) {
+                        if (item!.Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase)) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+        );
     }
 }
 
