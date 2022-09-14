@@ -2,6 +2,19 @@
 	@*<img src="@Synergy.Link" class="card-img border-2 p-3 bg-black" />*@
 	@*<img class="card-img w-auto h-auto mt-2" src=@Synergy.RatingLink>*@
     <div class="card-body">
+        @* @foreach (ItemGroup itemGroup in Synergy.ItemGroups) {
+            <div class="container-sm border bg-black border-4">
+                
+			</div>
+        } *@
+        @foreach (ItemGroup itemGroup in Synergy.ItemGroups) {
+            <p>@itemGroup.Type</p>
+            @foreach(var (name, link) in itemGroup.Pairs) {
+                <img src="@link">
+                <p>@name</p>
+            }
+            <br />
+        }
         <h8 class="card-title h4">@Synergy.Name</h8>
         @*<h9 class="text-muted card-subtitle d-block mb-2">@Synergy.Quote</h9>*@
         <p class="card-text h6">@Synergy.Description</p>

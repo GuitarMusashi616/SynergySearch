@@ -33,7 +33,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        _all_guns = await Http.GetFromJsonAsync<Gun[]>("sample-data/stuff_labelled.json");
+        _all_guns = await Http.GetFromJsonAsync<IEnumerable<Gun>>("sample-data/stuff_labelled.json");
         updateResults("");
     }
 
