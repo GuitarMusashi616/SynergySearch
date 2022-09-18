@@ -1,0 +1,80 @@
+@page "/run/"
+@page "/run/{SearchQuery}"
+@inject HttpClient Http
+@inject ICurrentRunService CurrentRunService
+
+@using System.Net
+
+<PageTitle>Gungeon Run</PageTitle>
+
+<h1>Run from Enter the Gungeon</h1>
+
+<p>Displays the current Gungeon Run, use searchbar to add acquired guns to current run</p>
+<Search Route="run"/>
+
+@if (_run == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="grid">
+		@foreach (var synergy in _run) {
+			<SynergyCard Synergy="synergy"></SynergyCard>
+		}
+    </div>
+}
+
+@code {
+    private IEnumerable<Synergy>? _all_run;
+    private IEnumerable<Synergy>? _run;
+    [Parameter]
+    public string? SearchQuery { get; set; }
+    private string? _cachedSearchQuery;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _all_run = await Http.GetFromJsonAsync<IEnumerable<Synergy>>("sample-data/synergies.json");
+        updateResults();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        updateResults();
+    }
+
+    private void updateResults()
+    {
+        //if (searchQuery == "" || searchQuery == null) 
+        //{
+        //    _run = _all_run;
+        //    return;
+        //}
+
+        //_run = _all_run!.Where(
+        //    x => {
+        //        foreach (var itemGroup in x.ItemGroups!) { 
+        //            foreach (string item in itemGroup.Items) {
+        //                if (item!.Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase)) {
+        //                    return true;
+        //                }
+        //            }
+        //        }
+        //        return false;
+        //    }
+        //);
+        _run = _all_run!.Where(
+            x => {
+                foreach (var itemGroup in x.ItemGroups!) { 
+                    foreach (string item in itemGroup.Items) {
+                        bool gunExists = false;
+                        if (CurrentRunService.Guns.TryGetValue(item, out gunExists) && gunExists) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+        );
+    }
+}
