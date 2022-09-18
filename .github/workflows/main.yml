@@ -30,7 +30,7 @@ jobs:
         run: dotnet publish SynergySearch/SynergySearch.csproj -c Release -o release
         
       - name: Commit wwwroot to GitHub Pages
-        uses: JamesIves/github-pages-deploy-actions@3.7.1
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
