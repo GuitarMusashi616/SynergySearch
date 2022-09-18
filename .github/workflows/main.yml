@@ -26,11 +26,6 @@ jobs:
       # Publish Blazor project to release-folder
       - name: Publish .Net Core Project
         run: dotnet publish SynergySearch/SynergySearch.csproj -c Release -o release
-        
-      - name: Commit wwwroot to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.0
-        with:
-          folder: release/wwwroot
           
       # changes the base-tag in index.html from '/' to 'SynergySearch' to match GitHub Pages repository subdirectory
       - name: Change base-tag in index.html from / to SynergySearch
@@ -38,3 +33,8 @@ jobs:
         
       - name: Add .nojekyll file
         run: touch release/wwwroot/.nojekyll
+        
+      - name: Commit wwwroot to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.0
+        with:
+          folder: release/wwwroot
