@@ -22,16 +22,12 @@ jobs:
       # Sets up .NET Core SDK 3.1
       - name: Setup .NET Core SDK 3.1
         uses: actions/setup-dotnet@v2.1.0
-        with:
-          dotnet-version: 3.1
 
       # Publish Blazor project to release-folder
       - name: Publish .Net Core Project
         run: dotnet publish SynergySearch/SynergySearch.csproj -c Release -o release
         
       - name: Commit wwwroot to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@4.4.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: release/wwwroot
+          folder: release/wwwroot
