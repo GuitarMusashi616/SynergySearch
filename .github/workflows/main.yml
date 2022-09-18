@@ -31,3 +31,10 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.0
         with:
           folder: release/wwwroot
+          
+      # changes the base-tag in index.html from '/' to 'SynergySearch' to match GitHub Pages repository subdirectory
+      - name: Change base-tag in index.html from / to SynergySearch
+        run: sed -i 's/<base href="\/" \/>/<base href="\/SynergySearch\/" \/>/g' release/wwwroot/index.html
+        
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
