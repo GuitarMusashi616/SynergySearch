@@ -1,12 +1,12 @@
 ﻿@inject ICurrentRunService CurrentRunService
 
-<div class="card shadow bg-opacity-25 bg-dark border-4 text-center p-3 m-1 d-inline-block" style="width: 18rem; border-color: @Gun.BorderColor; image-rendering: pixelated">
+<div class="card shadow bg-opacity-25 bg-dark border-4 text-center p-3 m-1 d-inline-block" style="width: 10rem; border-color: @Gun.BorderColor; image-rendering: pixelated">
 	<img src="@Gun.Link" class="card-img border-2 p-3 bg-black" />
 	<img class="card-img w-auto h-auto mt-2" src=@Gun.RatingLink>
     <div class="card-body">
-        <h8 class="card-title h4">@Gun.Name</h8>
-        <h9 class="text-muted card-subtitle d-block mb-2">@Gun.Quote</h9>
-        <p class="card-text h6">@Gun.Description</p>
+        <p class="card-title" style="font-size: 1rem;">@Gun.Name</p>
+        <p class="card-subtitle" style="font-size: 0.5rem;">@Gun.Quote</p>
+        <p class="card-text" style="font-size: 0.5rem;">@Gun.Description</p>
         <button title="AddToCurrentRun" type="button" class="btn btn-outline-light btn-success rounded-3" style="width: 2rem; height: 2rem" @onclick="AddToCurrentRun"> + </button>
         <button title="DeleteFromCurrentRun" type="button" class="btn btn-outline-light btn-danger rounded-3" style="width: 2rem; height: 2rem" @onclick="DeleteFromCurrentRun"> - </button>
         @*<a class="card-link" href="#">Link</a>*@
