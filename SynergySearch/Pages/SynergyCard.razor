@@ -1,18 +1,13 @@
-﻿<div class="card shadow bg-opacity-25 bg-dark border-4 p-3 m-1 d-inline-flex justify-content-center align-content-center text-center" style="max-width: 50%; image-rendering: pixelated">
-    <div class="card-header">
-		<h8 class="card-title h4">@Synergy.Name</h8>
+﻿<div class="card shadow bg-opacity-25 bg-dark border-1 p-0 m-1 d-inline-flex justify-content-center align-content-center text-center" style="image-rendering: pixelated">
+    <div class="card-header p-0 m-0">
+		<p class="card-title" style="font-size: 0.8rem;">@Synergy.Name</p>
     </div>
-	<div class="card-body">
+	<div class="card-body m-0 p-0">
 		@foreach (ItemGroup itemGroup in Synergy.ItemGroups!) {
 			<MiniItemGroupCard ItemGroup="@itemGroup" /> 
 		}
+		<p class="card-text d-inline-block" style="max-width: 16rem; font-size: 0.5rem">@Synergy.Description</p>
 	</div>
-    <div class="card-body">
-		<span class="card-text d-inline-block" style="max-width: 50%">@Synergy.Description</span>
-    </div>
-    <div class="card-footer">
-		<a class="card-link" href="#">Link</a><a class="card-link" href="#">Link</a>
-    </div>
 </div>
 
 @code {

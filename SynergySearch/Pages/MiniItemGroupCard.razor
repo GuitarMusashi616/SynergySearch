@@ -1,5 +1,5 @@
 ﻿<div>
-	<h6 class="mb-0 mt-3">@ItemGroup.Type</h6>
+	<p class="mb-0 mt-0" style="font-size: 0.5rem;">@ItemGroup.Type</p>
 	<div class="container d-flex justify-content-center align-items-center">
 		@foreach (var (name, link) in ItemGroup.Pairs) {
 			<MiniItemCard Name="@name" Link="@link" />
